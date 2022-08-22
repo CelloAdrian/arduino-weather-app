@@ -9,7 +9,10 @@ import {
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import BottomSheet, { BottomSheetRefProps, MAX_TRANSLATE_Y } from "../components/BottomSheet";
+import BottomSheet, {
+  BottomSheetRefProps,
+  MAX_TRANSLATE_Y,
+} from "../components/BottomSheet";
 import Register from "../components/Register";
 
 const Onboarding = () => {
@@ -42,44 +45,41 @@ const Onboarding = () => {
     [animatedValue];
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.PageContainer}>
-        <View style={styles.HeroImageContainer}>
-          <Animated.Text
-            style={[
-              styles.HeroImage,
-              {
-                transform: [
-                  {
-                    rotate: animatedValue.interpolate({
-                      inputRange: [0, 1, 2],
-                      outputRange: ["0deg", "30deg", "0deg"],
-                    }),
-                  },
-                ],
-              },
-            ]}
-          >
-            👋
-          </Animated.Text>
-        </View>
-        <View style={styles.TextContainer}>
-          <Text style={styles.Title}>Hey! Welcome</Text>
-          <Text style={styles.Subtitle}>
-            You are clicks away from setting up your own personal weather
-            station
-          </Text>
-        </View>
-        <View style={styles.ButtonGroup}>
-          <Pressable style={styles.Button} onPress={handleOnPress}>
-            <Text style={styles.ButtonText}>Get Started</Text>
-          </Pressable>
-        </View>
-        <BottomSheet ref={ref}>
-          <Register />
-        </BottomSheet>
+    <View style={styles.PageContainer}>
+      <View style={styles.HeroImageContainer}>
+        <Animated.Text
+          style={[
+            styles.HeroImage,
+            {
+              transform: [
+                {
+                  rotate: animatedValue.interpolate({
+                    inputRange: [0, 1, 2],
+                    outputRange: ["0deg", "30deg", "0deg"],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          👋
+        </Animated.Text>
       </View>
-    </GestureHandlerRootView>
+      <View style={styles.TextContainer}>
+        <Text style={styles.Title}>Hey! Welcome</Text>
+        <Text style={styles.Subtitle}>
+          You are clicks away from setting up your own personal weather station
+        </Text>
+      </View>
+      <View style={styles.ButtonGroup}>
+        <Pressable style={styles.Button} onPress={handleOnPress}>
+          <Text style={styles.ButtonText}>Get Started</Text>
+        </Pressable>
+      </View>
+      <BottomSheet ref={ref}>
+        <Register />
+      </BottomSheet>
+    </View>
   );
 };
 
