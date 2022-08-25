@@ -9,24 +9,17 @@ import {
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import BottomSheet, {
-  BottomSheetRefProps,
-  MAX_TRANSLATE_Y,
-} from "../components/BottomSheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import Register from "../components/Register";
 
 const Onboarding = () => {
-  const ref = useRef<BottomSheetRefProps>(null);
+  const bottomSheetRef = useRef<BottomSheet>(null);
+  const snapPoints = useMemo(() => ["50%", "85%"], []);
+
   const animatedValue = new Animated.Value(0);
 
   const handleOnPress = useCallback(() => {
-    const isActive = ref?.current?.isActive();
-
-    if (isActive) {
-      ref?.current?.scrollTo(0);
-    } else {
-      ref?.current?.scrollTo(MAX_TRANSLATE_Y);
-    }
+    bottomSheetRef.current?.snapToIndex(1);
   }, []);
 
   useEffect(() => {
@@ -76,7 +69,12 @@ const Onboarding = () => {
           <Text style={styles.ButtonText}>Get Started</Text>
         </Pressable>
       </View>
-      <BottomSheet ref={ref}>
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPoints}
+        enablePanDownToClose
+      >
         <Register />
       </BottomSheet>
     </View>
