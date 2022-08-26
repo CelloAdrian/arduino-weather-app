@@ -11,6 +11,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import BottomSheet from "@gorhom/bottom-sheet";
 import Register from "../components/Register";
+import Handle from "../components/BottomSheet/Handle";
 
 const Onboarding = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -74,6 +75,20 @@ const Onboarding = () => {
         index={1}
         snapPoints={snapPoints}
         enablePanDownToClose
+        handleComponent={Handle}
+        style={{
+          // https://github.com/gorhom/react-native-bottom-sheet/issues/734#issuecomment-1150977998
+          // https://10015.io/tools/react-native-shadow-generator
+          backgroundColor: "rgba(255, 255, 255,0)",
+          shadowColor: "#000000",
+          shadowOffset: {
+            width: 0,
+            height: 18,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 20.0,
+          elevation: 24,
+        }}
       >
         <Register />
       </BottomSheet>
