@@ -1,4 +1,5 @@
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import { TextInput } from "react-native-paper";
 
 const Register = () => {
   return (
@@ -16,8 +17,16 @@ const Register = () => {
         <Text style={styles.Title}>Create an account</Text>
       </View>
       <View style={{ width: "100%", marginVertical: 25 }}>
-        <TextInput placeholder="Name" style={styles.Input} />
-        <TextInput placeholder="Password" style={styles.Input} />
+        <TextInput
+          mode="flat"
+          placeholder="Name"
+          style={{
+            backgroundColor: "#FFFFFF",
+          }}
+          underlineColor="#FFFFFF"
+          activeUnderlineColor="#F2D264"
+          spellCheck={false}
+        />
       </View>
       <View
         style={{
@@ -27,11 +36,13 @@ const Register = () => {
           marginVertical: 25,
         }}
       >
-        <Pressable style={[styles.CreateAccountButton, styles.ButtonGroupItems]}>
-          <Text>Create an Account</Text>
+        <Pressable
+          style={[styles.CreateAccountButton, styles.ButtonGroupItems]}
+        >
+          <Text style={styles.ButtonText}>Create an Account</Text>
         </Pressable>
         <Pressable style={styles.ButtonGroupItems}>
-          <Text>Already have an account?</Text>
+          <Text style={styles.LoginHrefText}>Already have an account?</Text>
         </Pressable>
       </View>
     </View>
@@ -61,6 +72,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f2d264",
     borderRadius: 7,
     width: "100%",
+  },
+  ButtonText: {
+    fontWeight: "700",
+  },
+  LoginHrefText: {
+    color: "#7B7F87",
   },
   ButtonGroupItems: {
     marginVertical: 10,
