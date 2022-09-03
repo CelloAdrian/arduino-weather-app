@@ -49,7 +49,12 @@ const Register = () => {
         }}
       >
         <Pressable
-          style={[styles.CreateAccountButton, styles.ButtonGroupItems]}
+          style={
+            name.length >= 3
+              ? [styles.Button, styles.ButtonEnabled, styles.ButtonGroupItems]
+              : [styles.Button, styles.ButtonDisabled, styles.ButtonGroupItems]
+          }
+          disabled={name.length < 3}
           onPress={() => navigate("Homescreen")}
         >
           <Text style={styles.ButtonText}>Create an Account</Text>
@@ -77,20 +82,25 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
   },
-  CreateAccountButton: {
+  Button: {
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 15,
     paddingBottom: 15,
-    backgroundColor: "#f2d264",
     borderRadius: 7,
     width: "100%",
+  },
+  ButtonEnabled: {
+    backgroundColor: "#f2d264",
+  },
+  ButtonDisabled: {
+    backgroundColor: "#d1d6d9",
   },
   ButtonText: {
     fontWeight: "700",
   },
   LoginHrefText: {
-    color: "#7B7F87",
+    color: "#7b7F87",
   },
   ButtonGroupItems: {
     marginVertical: 10,
