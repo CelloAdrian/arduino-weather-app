@@ -7,7 +7,6 @@ import {
   Easing,
   Animated,
 } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import BottomSheet from "@gorhom/bottom-sheet";
 import Register from "../components/Register";
